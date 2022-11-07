@@ -31,13 +31,13 @@ public class HomeFragment extends Fragment {
 
 
 
-        Button btn = (Button) getView().findViewById(R.id.button3);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                homeViewModel.getLista();
-            }
-        });
+//        Button btn = (Button) getView().findViewById(R.id.button3);
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                homeViewModel.getLista();
+//            }
+//        });
 
 //        final TextView textView = binding.textHome;
 //        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);

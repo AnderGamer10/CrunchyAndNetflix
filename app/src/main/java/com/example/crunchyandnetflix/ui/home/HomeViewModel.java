@@ -32,39 +32,4 @@ public class HomeViewModel extends ViewModel {
     public interface listas {
 
     }
-
-    public ArrayList<Object> getLista() {
-        ArrayList<Object> lista = new ArrayList<>();
-        String url = "https://api.tvmaze.com/shows";
-        StringRequest postResquest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONArray jsonObject = new JSONArray(response);
-//                    jsonObject.sort()
-
-                    for (int i = 0; i < 10; i++) {
-                        JSONObject j = jsonObject.getJSONObject(i);
-                        lista.add(j.getString("name"));
-//                        lista.add(new Universidad(j.getString("name"), j.getString("domains").substring(2,j.getString("domains").length()-2)));
-                    }
-                    for (int i = 0; i < lista.size(); i++) {
-                        Log.i("s", (String) lista.get(i));
-                    }
-
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("Error", error.getMessage());
-            }
-        });
-        Volley.newRequestQueue(new MainActivity()).add(postResquest);
-
-        return lista;
-    }
 }

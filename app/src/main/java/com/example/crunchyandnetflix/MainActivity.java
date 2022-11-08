@@ -1,5 +1,6 @@
 package com.example.crunchyandnetflix;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -25,15 +26,19 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-
+    public static ArrayList<Data> listaCompleta = new ArrayList<>();
     private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getLista();
+        getListaCompleta();
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -47,30 +52,51 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
+
+
     }
-    public ArrayList<Object> getLista() {
-        ArrayList<Object> lista = new ArrayList<>();
+
+
+    public ArrayList<Data> getListaCompleta() {
         String url = "https://api.tvmaze.com/shows";
         StringRequest postResquest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONArray jsonObject = new JSONArray(response);
-//                    jsonObject.sort()
 
-                    for (int i = 0; i < 10; i++) {
+                    for (int i = 0; i < jsonObject.length(); i++) {
                         JSONObject j = jsonObject.getJSONObject(i);
-                        lista.add(j.getString("name"));
-//                        JSONObject o = new JSONObject();
-                        String imagen = j.getJSONObject("image").getString("original");
-                        Log.i("asdasd", imagen);
-//                        lista.add(new Universidad(j.getString("name"), j.getString("domains").substring(2,j.getString("domains").length()-2)));
-                        lista.add(new Data(j.getInt("id"),j.getString("name"),j.getJSONArray("genres"),j.getJSONObject("rating").getString("average"),j.getJSONObject("image").getString("medium"),j.getJSONObject("image").getString("original"),j.getString("summary")));
-                    }
-                    for (int i = 0; i < lista.size(); i++) {
-                        Log.i("s", (String) lista.get(i));
+                        listaCompleta.add(new Data(j.getInt("id"),j.getString("name"),j.getJSONArray("genres"),j.getJSONObject("rating").getString("average"),j.getJSONObject("image").getString("medium"),j.getJSONObject("image").getString("original"),j.getString("summary")));
+
+
+//                        TODO: Codigo para obtener los generos(separados) de cada serie
+//                        ArrayList<String> exampleList = new ArrayList<String>();
+//                        JSONArray genre = j.getJSONArray("genres");
+//
+//                        for (int a = 0; a < genre.length(); a++) {
+//                            exampleList.add((String) genre.get(a));
+//                        }
+//                        int size = exampleList.size();
+//                        String[] stringArray = exampleList.toArray(new String[size]);
+//
+//                        Log.i("asdfasdass","Output String array will be : ");
+//                        for (String s : stringArray) {
+//                            Log.i("saaa",s);
+//                        }
+
                     }
 
+//                    TODO: Codigo para obtener las series con mayor valoracion
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+//                        listaCompleta.removeIf(o -> Objects.equals(o.getRating(), "null"));
+//                        listaCompleta.sort((o1,o2)->o1.getRating().compareTo(o2.getRating()));
+//                    }
+//                    Collections.reverse(listaCompleta);
+//                    for (int i = 0; i < 10; i++) {
+//                        Log.i("s", String.valueOf(listaCompleta.get(i).getRating()));
+//                        Log.i("s", String.valueOf(listaCompleta.get(i).getGenres()));
+//                    }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -84,6 +110,6 @@ public class MainActivity extends AppCompatActivity {
         });
         Volley.newRequestQueue(this).add(postResquest);
 
-        return lista;
+        return listaCompleta;
     }
 }

@@ -8,6 +8,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.crunchyandnetflix.MainActivity;
+import com.example.crunchyandnetflix.Modelos.Data;
 import com.example.crunchyandnetflix.Modelos.showConID;
 
 import org.json.JSONArray;
@@ -15,28 +16,27 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-public class obtencionLista {
+public class obtencionLista extends MainActivity{
 
-    public ArrayList<Object> getListaCompleta() {
-        ArrayList<Object> lista = new ArrayList<>();
+//                        lista.add(j.getString("name"));
+//                        JSONObject o = new JSONObject();
+//                        String imagen = j.getJSONObject("image").getString("original");
+//                        Log.i("Probando imagenes", imagen);
+    public ArrayList<Data> getListaCompleta() {
+        ArrayList<Data> lista = new ArrayList<>();
         String url = "https://api.tvmaze.com/shows";
         StringRequest postResquest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONArray jsonObject = new JSONArray(response);
-//                    jsonObject.sort()
-
                     for (int i = 0; i < 10; i++) {
                         JSONObject j = jsonObject.getJSONObject(i);
-                        lista.add(j.getString("name"));
-//                        lista.add(new Universidad(j.getString("name"), j.getString("domains").substring(2,j.getString("domains").length()-2)));
+                        lista.add(new Data(j.getInt("id"),j.getString("name"),j.getJSONArray("genres"),j.getJSONObject("rating").getString("average"),j.getJSONObject("image").getString("medium"),j.getJSONObject("image").getString("original"),j.getString("summary")));
                     }
                     for (int i = 0; i < lista.size(); i++) {
-                        Log.i("s", (String) lista.get(i));
+                        Log.i("s", String.valueOf(lista.get(i).getGenres()));
                     }
-
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -47,7 +47,7 @@ public class obtencionLista {
                 Log.e("Error", error.getMessage());
             }
         });
-        Volley.newRequestQueue(new MainActivity()).add(postResquest);
+        Volley.newRequestQueue(this).add(postResquest);
 
         return lista;
     }
@@ -81,7 +81,7 @@ public class obtencionLista {
                 Log.e("Error", error.getMessage());
             }
         });
-        Volley.newRequestQueue(new MainActivity()).add(postResquest);
+        Volley.newRequestQueue(this).add(postResquest);
 
         return lista;
     }

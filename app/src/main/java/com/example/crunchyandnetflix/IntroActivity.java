@@ -1,6 +1,7 @@
 package com.example.crunchyandnetflix;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -28,10 +29,11 @@ public class IntroActivity extends AppCompatActivity {
     ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+//            Para poner la aplicacion en modo "NOCHE"
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
         progressBar = findViewById(R.id.dataCarga);
-
         new Task1().execute();
     }
 
@@ -44,7 +46,7 @@ public class IntroActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... strings) {
             try {
-                Thread.sleep(5000);
+                Thread.sleep(2000);
             }catch (InterruptedException e){
                 e.printStackTrace();
             }
@@ -55,7 +57,6 @@ public class IntroActivity extends AppCompatActivity {
             progressBar.setVisibility(View.INVISIBLE);
             Intent newActivity = new Intent(IntroActivity.this, MainActivity.class);
             IntroActivity.this.startActivity(newActivity);
-
         }
     }
     public ArrayList<Data> getListaCompleta() {

@@ -8,10 +8,9 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.crunchyandnetflix.Modelos.SerieItem;
 import com.example.crunchyandnetflix.R;
-//import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +35,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         SerieItem model = list.get(position);
-        Glide.with(context).load(model.getImageUrl()).into(holder.imageView);
-//        Picasso.get().load(model.getImageUrl()).into(holder.imageView);
+        Picasso.get().load(model.getImageUrl()).into(holder.imageView);
     }
 
     @Override

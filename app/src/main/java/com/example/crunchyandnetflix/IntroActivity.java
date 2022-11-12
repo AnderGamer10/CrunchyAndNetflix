@@ -89,17 +89,6 @@ public class IntroActivity extends AppCompatActivity {
 
                     }
 
-//                    TODO: Codigo para obtener las series con mayor valoracion
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-//                        listaCompleta.removeIf(o -> Objects.equals(o.getRating(), "null"));
-//                        listaCompleta.sort((o1,o2)->o1.getRating().compareTo(o2.getRating()));
-//                    }
-//                    Collections.reverse(listaCompleta);
-//                    for (int i = 0; i < 10; i++) {
-//                        Log.i("s", String.valueOf(listaCompleta.get(i).getRating()));
-//                        Log.i("s", String.valueOf(listaCompleta.get(i).getGenres()));
-//                    }
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

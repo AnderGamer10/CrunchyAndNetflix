@@ -18,14 +18,13 @@ public class CatalogueFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        CatalogueViewModel notificationsViewModel =
+        CatalogueViewModel catalogueViewModel =
                 new ViewModelProvider(this).get(CatalogueViewModel.class);
 
         binding = FragmentCatalogueBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        catalogueViewModel.mostrarGeneros(root);
 
-        final TextView textView = binding.textNotifications;
-        notificationsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

@@ -69,26 +69,18 @@ public class IntroActivity extends AppCompatActivity {
 
                     for (int i = 0; i < jsonObject.length(); i++) {
                         JSONObject j = jsonObject.getJSONObject(i);
-                        listaCompleta.add(new Data(j.getInt("id"),j.getString("name"),j.getJSONArray("genres"),j.getJSONObject("rating").getString("average"),j.getJSONObject("image").getString("medium"),j.getJSONObject("image").getString("original"),j.getString("summary")));
-
-
+                        
 //                        TODO: Codigo para obtener los generos(separados) de cada serie
-//                        ArrayList<String> exampleList = new ArrayList<String>();
-//                        JSONArray genre = j.getJSONArray("genres");
-//
-//                        for (int a = 0; a < genre.length(); a++) {
-//                            exampleList.add((String) genre.get(a));
-//                        }
-//                        int size = exampleList.size();
-//                        String[] stringArray = exampleList.toArray(new String[size]);
-//
-//                        Log.i("asdfasdass","Output String array will be : ");
-//                        for (String s : stringArray) {
-//                            Log.i("saaa",s);
-//                        }
+                        JSONArray genres = j.getJSONArray("genres");
+                        ArrayList<String> genresList = new ArrayList<>();
+                        for (int a = 0; a < genres.length(); a++) {
+                            genresList.add((String) genres.get(a));
+                        }
+                        int size = genresList.size();
+                        String[] GenresArray = genresList.toArray(new String[size]);
 
+                        listaCompleta.add(new Data(j.getInt("id"),j.getString("name"),GenresArray,j.getJSONObject("rating").getString("average"),j.getJSONObject("image").getString("medium"),j.getJSONObject("image").getString("original"),j.getString("summary")));
                     }
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

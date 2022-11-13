@@ -5,13 +5,13 @@ import org.json.JSONArray;
 public class Data {
     int id;
     String name;
-    JSONArray genres;
+    String[] genres;
     String rating;
     String imageMedium;
     String imageOriginal;
     String descripcion;
 
-    public Data(int id, String name, JSONArray genres, String rating, String imageMedium, String imageOriginal, String descripcion) {
+    public Data(int id, String name, String[] genres, String rating, String imageMedium, String imageOriginal, String descripcion) {
         this.id = id;
         this.name = name;
         this.genres = genres;
@@ -37,11 +37,11 @@ public class Data {
         this.name = name;
     }
 
-    public JSONArray getGenres() {
+    public String[] getGenres() {
         return genres;
     }
 
-    public void setGenres(JSONArray genres) {
+    public void setGenres(String[] genres) {
         this.genres = genres;
     }
 

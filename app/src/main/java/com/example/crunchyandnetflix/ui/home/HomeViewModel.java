@@ -51,8 +51,9 @@ public class HomeViewModel extends ViewModel {
         Collections.reverse(datosArrayAParsear);
 
         for (int i = 0; i < 10; i++){
-            dataMasPopular.add(new SerieItem(datosArrayAParsear.get(i).getId(), datosArrayAParsear.get(i).getName(), datosArrayAParsear.get(i).getImageMedium(),datosArrayAParsear.get(i).getRating(),datosArrayAParsear.get(i).getGenres()));
+            dataMasPopular.add(new SerieItem(datosArrayAParsear.get(i).getId(), datosArrayAParsear.get(i).getName(), datosArrayAParsear.get(i).getImageMedium(),datosArrayAParsear.get(i).getRating(),datosArrayAParsear.get(i).getGenres(),datosArrayAParsear.get(i).getDescripcion(),datosArrayAParsear.get(i).getStatus(),datosArrayAParsear.get(i).getMediaTiempo(),datosArrayAParsear.get(i).getFechaEstreno(),datosArrayAParsear.get(i).getFechaFinalizacion()));
         }
+
         recyclerView = root.findViewById(R.id.listMasPopulares);
         itemAdapter = new ItemAdapter(root.getContext(), dataMasPopular);
         linearLayoutManager = new LinearLayoutManager(root.getContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -65,7 +66,7 @@ public class HomeViewModel extends ViewModel {
         for (int i = 0; i < datosArrayAParsear.size();i++){
             for (int j = 0; j < datosArrayAParsear.get(i).getGenres().length;j++){
                 if (datosArrayAParsear.get(i).getGenres()[j].equals("Anime")){
-                    listAnime.add(new SerieItem(datosArrayAParsear.get(i).getId(), datosArrayAParsear.get(i).getName(), datosArrayAParsear.get(i).getImageMedium(),datosArrayAParsear.get(i).getRating(),datosArrayAParsear.get(i).getGenres()));
+                    listAnime.add(new SerieItem(datosArrayAParsear.get(i).getId(), datosArrayAParsear.get(i).getName(), datosArrayAParsear.get(i).getImageMedium(),datosArrayAParsear.get(i).getRating(),datosArrayAParsear.get(i).getGenres(),datosArrayAParsear.get(i).getDescripcion(),datosArrayAParsear.get(i).getStatus(),datosArrayAParsear.get(i).getMediaTiempo(),datosArrayAParsear.get(i).getFechaEstreno(),datosArrayAParsear.get(i).getFechaFinalizacion()));
                 }
             }
         }
@@ -82,7 +83,7 @@ public class HomeViewModel extends ViewModel {
         for (int i = 0; i < datosArrayAParsear.size();i++){
             for (int j = 0; j < datosArrayAParsear.get(i).getGenres().length;j++){
                 if (datosArrayAParsear.get(i).getGenres()[j].equals("Horror")){
-                    listTerror.add(new SerieItem(datosArrayAParsear.get(i).getId(), datosArrayAParsear.get(i).getName(), datosArrayAParsear.get(i).getImageMedium(),datosArrayAParsear.get(i).getRating(),datosArrayAParsear.get(i).getGenres()));
+                    listTerror.add(new SerieItem(datosArrayAParsear.get(i).getId(), datosArrayAParsear.get(i).getName(), datosArrayAParsear.get(i).getImageMedium(),datosArrayAParsear.get(i).getRating(),datosArrayAParsear.get(i).getGenres(),datosArrayAParsear.get(i).getDescripcion(),datosArrayAParsear.get(i).getStatus(),datosArrayAParsear.get(i).getMediaTiempo(),datosArrayAParsear.get(i).getFechaEstreno(),datosArrayAParsear.get(i).getFechaFinalizacion()));
                 }
             }
         }

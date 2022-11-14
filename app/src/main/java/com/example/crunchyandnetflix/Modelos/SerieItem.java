@@ -4,24 +4,29 @@ import org.json.JSONArray;
 
 public class SerieItem {
 
-    Integer id;
-    String serieName, imageUrl;
+    int id;
+    String serieName, imageUrl,descripcion, status, fechaEstreno, fechaFinalizacion, mediaTiempo;
     String rating;
     String[] genres;
 
-    public SerieItem(Integer id, String serieName, String imageUrl, String rating, String[] genres) {
+    public SerieItem(int id, String serieName, String imageUrl, String rating, String[] genres,String descripcion, String status, String mediaTiempo, String fechaEstreno, String fechaFinalizacion) {
         this.id = id;
         this.serieName = serieName;
         this.imageUrl = imageUrl;
         this.rating = rating;
         this.genres = genres;
+        this.descripcion = descripcion;
+        this.status = status;
+        this.mediaTiempo = mediaTiempo;
+        this.fechaEstreno = fechaEstreno;
+        this.fechaFinalizacion = fechaFinalizacion;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -55,5 +60,45 @@ public class SerieItem {
 
     public void setGenres(String[] genres) {
         this.genres = genres;
+    }
+
+    public String getMediaTiempo() {
+        return mediaTiempo;
+    }
+
+    public void setMediaTiempo(String mediaTiempo) {
+        this.mediaTiempo = mediaTiempo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getFechaEstreno() {
+        return fechaEstreno;
+    }
+
+    public void setFechaEstreno(String fechaEstreno) {
+        this.fechaEstreno = fechaEstreno;
+    }
+
+    public String getFechaFinalizacion() {
+        return fechaFinalizacion;
+    }
+
+    public void setFechaFinalizacion(String fechaFinalizacion) {
+        this.fechaFinalizacion = fechaFinalizacion;
     }
 }

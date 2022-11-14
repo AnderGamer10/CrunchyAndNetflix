@@ -4,14 +4,10 @@ import org.json.JSONArray;
 
 public class Data {
     int id;
-    String name;
+    String name,rating,imageMedium,imageOriginal, descripcion, status, fechaEstreno, fechaFinalizacion, mediaTiempo;
     String[] genres;
-    String rating;
-    String imageMedium;
-    String imageOriginal;
-    String descripcion;
 
-    public Data(int id, String name, String[] genres, String rating, String imageMedium, String imageOriginal, String descripcion) {
+    public Data(int id, String name, String[] genres, String rating, String imageMedium, String imageOriginal, String descripcion, String status, String mediaTiempo, String fechaEstreno, String fechaFinalizacion) {
         this.id = id;
         this.name = name;
         this.genres = genres;
@@ -19,6 +15,10 @@ public class Data {
         this.imageMedium = imageMedium;
         this.imageOriginal = imageOriginal;
         this.descripcion = descripcion;
+        this.status = status;
+        this.mediaTiempo = mediaTiempo;
+        this.fechaEstreno = fechaEstreno;
+        this.fechaFinalizacion = fechaFinalizacion;
     }
 
     public int getId() {
@@ -75,5 +75,37 @@ public class Data {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public String getMediaTiempo() {
+        return mediaTiempo;
+    }
+
+    public void setMediaTiempo(String mediaTiempo) {
+        this.mediaTiempo = mediaTiempo;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getFechaEstreno() {
+        return fechaEstreno;
+    }
+
+    public void setFechaEstreno(String fechaEstreno) {
+        this.fechaEstreno = fechaEstreno;
+    }
+
+    public String getFechaFinalizacion() {
+        return fechaFinalizacion;
+    }
+
+    public void setFechaFinalizacion(String fechaFinalizacion) {
+        this.fechaFinalizacion = fechaFinalizacion;
     }
 }

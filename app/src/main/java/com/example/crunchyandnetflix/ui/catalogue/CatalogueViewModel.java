@@ -2,15 +2,11 @@ package com.example.crunchyandnetflix.ui.catalogue;
 
 import android.view.View;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.crunchyandnetflix.Adapter.GenresAdapter;
-import com.example.crunchyandnetflix.Adapter.ItemAdapter;
-import com.example.crunchyandnetflix.Modelos.SerieItem;
 import com.example.crunchyandnetflix.R;
 
 import java.util.ArrayList;
@@ -49,7 +45,7 @@ public class CatalogueViewModel extends ViewModel {
         listGenres.add("Supernatural");
         listGenres.add("Fantasy");
 
-        recyclerView = root.findViewById(R.id.generos);
+        recyclerView = root.findViewById(R.id.idTxtMediaTiempo);
         genresAdapter = new GenresAdapter(root.getContext(), listGenres);
         linearLayoutManager = new LinearLayoutManager(root.getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);

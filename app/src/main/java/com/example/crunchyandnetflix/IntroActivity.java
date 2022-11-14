@@ -78,8 +78,7 @@ public class IntroActivity extends AppCompatActivity {
                         }
                         int size = genresList.size();
                         String[] GenresArray = genresList.toArray(new String[size]);
-
-                        listaCompleta.add(new Data(j.getInt("id"),j.getString("name"),GenresArray,j.getJSONObject("rating").getString("average"),j.getJSONObject("image").getString("medium"),j.getJSONObject("image").getString("original"),j.getString("summary")));
+                        listaCompleta.add(new Data(j.getInt("id"),j.getString("name"),GenresArray,j.getJSONObject("rating").getString("average"),j.getJSONObject("image").getString("medium"),j.getJSONObject("image").getString("original"),j.getString("summary"),j.getString("status"),j.getString("averageRuntime"),j.getString("premiered"),j.getString("ended")));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

@@ -28,6 +28,7 @@ public class MovieActivity extends AppCompatActivity {
         txtMediaTiempo = findViewById(R.id.idTxtMediaTiempo);
         txtFechaEstreno = findViewById(R.id.idTxtFechaEstreno);
         txtFechaFinalizacion = findViewById(R.id.idTxtFechaFinalizacion);
+        txtDescripcion = findViewById(R.id.idTxtDescripcion);
 
         mainImageView = findViewById(R.id.mainImageView);
 
@@ -44,15 +45,14 @@ public class MovieActivity extends AppCompatActivity {
         Picasso.get().load(image).into(mainImageView);
         txtNombre.setText(name + "  " + rating + " ⭐");
         txtStatus.setText("Estado: " + status);
-        txtMediaTiempo.setText("Media (mins/ep): " + mediaTiempo);
+        txtMediaTiempo.setText("Media (mins/ep): " + mediaTiempo + " mins");
         txtFechaEstreno.setText("Fecha de estreno: " + fechaEstreno);
         if (fechaFinalizacion.equalsIgnoreCase("null")){
             txtFechaFinalizacion.setText("Fecha de finalizacion: Sin finalizar");
         }else{
             txtFechaFinalizacion.setText("Fecha de finalizacion: " + fechaFinalizacion);
         }
-
-
+        txtDescripcion.setText("Descripcion: " + descripcion.replaceAll("<[^>]*>", ""));
         txtGeneros.setText("Generos: " + Arrays.toString(genres).replaceAll("\\[|\\]", ""));
 
 

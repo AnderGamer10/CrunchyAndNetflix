@@ -1,5 +1,7 @@
 package com.example.crunchyandnetflix.ui.home;
 
+import android.content.Intent;
+import android.media.Image;
 import android.os.Build;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +15,7 @@ import com.example.crunchyandnetflix.Adapter.ItemAdapter;
 import com.example.crunchyandnetflix.IntroActivity;
 import com.example.crunchyandnetflix.Modelos.Data;
 import com.example.crunchyandnetflix.Modelos.SerieItem;
+import com.example.crunchyandnetflix.MovieActivity;
 import com.example.crunchyandnetflix.R;
 import com.squareup.picasso.Picasso;
 
@@ -35,12 +38,6 @@ public class HomeViewModel extends ViewModel {
 
     public void mostrarSeries(View root){
         ArrayList<Data> datosArrayAParsear = IntroActivity.listaCompleta;
-
-//        TODO: Un "cartel" random cada vez
-        Random r = new Random();
-        int randomNumber = r.nextInt(datosArrayAParsear.size());
-
-        Picasso.get().load(datosArrayAParsear.get(randomNumber).getImageMedium()).into((ImageView) root.findViewById(R.id.mainImageView));
 
 //        TODO: Mas populares por "rating"
         ArrayList<SerieItem> dataMasPopular = new ArrayList<>();
@@ -93,5 +90,29 @@ public class HomeViewModel extends ViewModel {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(itemAdapter);
+
+
+//        TODO: Un "cartel" random cada vez
+        Random r = new Random();
+        int randomNumber = r.nextInt(datosArrayAParsear.size());
+
+        Picasso.get().load(datosArrayAParsear.get(randomNumber).getImageMedium()).into((ImageView) root.findViewById(R.id.mainImageView));
+
+        ImageView imageView = root.findViewById(R.id.mainImageView);
+        imageView.setOnClickListener(view -> {
+            Intent newActivity = new Intent(root.getContext(), MovieActivity.class);
+            newActivity.putExtra("id", datosArrayAParsear.get(randomNumber).getId());
+            newActivity.putExtra("serieName", datosArrayAParsear.get(randomNumber).getName());
+            newActivity.putExtra("imageUrl", datosArrayAParsear.get(randomNumber).getImageMedium());
+            newActivity.putExtra("rating", datosArrayAParsear.get(randomNumber).getRating());
+            newActivity.putExtra("genres", datosArrayAParsear.get(randomNumber).getGenres());
+            newActivity.putExtra("descripcion", datosArrayAParsear.get(randomNumber).getDescripcion());
+            newActivity.putExtra("status", datosArrayAParsear.get(randomNumber).getStatus());
+            newActivity.putExtra("mediaTiempo", datosArrayAParsear.get(randomNumber).getMediaTiempo());
+            newActivity.putExtra("fechaEstreno", datosArrayAParsear.get(randomNumber).getFechaEstreno());
+            newActivity.putExtra("fechaFinalizacion", datosArrayAParsear.get(randomNumber).getFechaFinalizacion());
+            root.getContext().startActivity(newActivity);
+        });
+
     }
 }

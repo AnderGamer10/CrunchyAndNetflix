@@ -1,28 +1,33 @@
 package com.example.crunchyandnetflix.Adapter;
 
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.crunchyandnetflix.Modelos.SerieItem;
-import com.example.crunchyandnetflix.SerieActivity;
 import com.example.crunchyandnetflix.R;
+import com.example.crunchyandnetflix.SerieActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
+public class GenreItemAdapter extends RecyclerView.Adapter<GenreItemAdapter.ViewHolder> {
 
     private final Context context;
     private final List<SerieItem> list;
 
-    public ItemAdapter(Context context, ArrayList<SerieItem> list) {
+    public GenreItemAdapter(Context context, ArrayList<SerieItem> list) {
         this.context = context;
         this.list = list;
     }
@@ -30,15 +35,18 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.serie_card_layout, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.genre_card_layout, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         SerieItem model = list.get(position);
-        Picasso.get().load(model.getImageUrl()).into(holder.imageView);
-        holder.imageView.setOnClickListener(new View.OnClickListener() {
+        holder.nombre.setText(model.getSerieName());
+        holder.rating.setText(model.getRating() + " ⭐");
+        holder.generos.setText(Arrays.toString(model.getGenres()).replaceAll("\\[|\\]", ""));
+        holder.status.setText(model.getStatus());
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent newActivity = new Intent(context, SerieActivity.class);
@@ -55,6 +63,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
                 context.startActivity(newActivity);
             }
         });
+        Picasso.get().load(model.getImageUrl()).into(holder.imageView);
     }
 
     @Override
@@ -64,9 +73,18 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final ImageView imageView;
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            imageView = itemView.findViewById(R.id.idImages);
+        private final CardView cardView;
+        private final TextView nombre, generos, status, rating;
+
+        public ViewHolder(@NonNull View genreView) {
+            super(genreView);
+            imageView = genreView.findViewById(R.id.idImage);
+            nombre = genreView.findViewById(R.id.idName);
+            generos = genreView.findViewById(R.id.idAllGenres);
+            status = genreView.findViewById(R.id.idStatus);
+            rating = genreView.findViewById(R.id.idRating);
+            cardView = genreView.findViewById(R.id.cardGenre);
+
         }
     }
 }

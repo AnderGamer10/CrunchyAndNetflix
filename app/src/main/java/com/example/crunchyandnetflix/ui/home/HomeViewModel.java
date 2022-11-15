@@ -1,9 +1,7 @@
 package com.example.crunchyandnetflix.ui.home;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Build;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -15,11 +13,9 @@ import com.example.crunchyandnetflix.Adapter.ItemAdapter;
 import com.example.crunchyandnetflix.IntroActivity;
 import com.example.crunchyandnetflix.Modelos.Data;
 import com.example.crunchyandnetflix.Modelos.SerieItem;
-import com.example.crunchyandnetflix.MovieActivity;
+import com.example.crunchyandnetflix.SerieActivity;
 import com.example.crunchyandnetflix.R;
 import com.squareup.picasso.Picasso;
-
-import org.json.JSONArray;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -100,7 +96,7 @@ public class HomeViewModel extends ViewModel {
 
         ImageView imageView = root.findViewById(R.id.mainImageView);
         imageView.setOnClickListener(view -> {
-            Intent newActivity = new Intent(root.getContext(), MovieActivity.class);
+            Intent newActivity = new Intent(root.getContext(), SerieActivity.class);
             newActivity.putExtra("id", datosArrayAParsear.get(randomNumber).getId());
             newActivity.putExtra("serieName", datosArrayAParsear.get(randomNumber).getName());
             newActivity.putExtra("imageUrl", datosArrayAParsear.get(randomNumber).getImageMedium());

@@ -11,7 +11,7 @@ import com.squareup.picasso.Picasso;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class MovieActivity extends AppCompatActivity {
+public class SerieActivity extends AppCompatActivity {
     String[] genres;
     String  name, image,rating, descripcion, status, mediaTiempo, fechaEstreno,fechaFinalizacion;
     TextView txtGeneros, txtNombre, txtStatus, txtMediaTiempo, txtFechaEstreno, txtFechaFinalizacion, txtDescripcion;
@@ -20,7 +20,7 @@ public class MovieActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Objects.requireNonNull(getSupportActionBar()).hide();
-        setContentView(R.layout.activity_movie);
+        setContentView(R.layout.activity_serie);
 
         txtGeneros = findViewById(R.id.idTxtGeneros);
         txtNombre = findViewById(R.id.idTxtNombre);

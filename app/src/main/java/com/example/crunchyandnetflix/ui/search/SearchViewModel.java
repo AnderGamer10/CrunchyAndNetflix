@@ -22,6 +22,7 @@ public class SearchViewModel extends ViewModel {
     RecyclerView recyclerView;
     GenreItemAdapter genreItemAdapter;
     LinearLayoutManager linearLayoutManager;
+//    SearchView searchView;
     public SearchViewModel() {
 
     }
@@ -38,17 +39,21 @@ public class SearchViewModel extends ViewModel {
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(genreItemAdapter);
 
+//        searchView = root.findViewById(R.id.searchView);
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                genreItemAdapter.filter(query);
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                genreItemAdapter.filter(newText);
+//                return false;
+//            }
+//        });
     }
 
-//    @Override
-//    public boolean onQueryTextSubmit(String query) {
-//
-//        return false;
-//    }
-//
-//    @Override
-//    public boolean onQueryTextChange(String newText) {
-//
-//        return false;
-//    }
+
 }

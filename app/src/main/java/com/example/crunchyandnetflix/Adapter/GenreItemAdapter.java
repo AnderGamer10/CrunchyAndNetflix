@@ -21,15 +21,17 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 public class GenreItemAdapter extends RecyclerView.Adapter<GenreItemAdapter.ViewHolder> {
 
     private final Context context;
     private final List<SerieItem> list;
-
+//    private final List<SerieItem> listCopia = null;
     public GenreItemAdapter(Context context, ArrayList<SerieItem> list) {
         this.context = context;
         this.list = list;
+//        this.listCopia.addAll(list);
     }
 
     @NonNull
@@ -87,4 +89,20 @@ public class GenreItemAdapter extends RecyclerView.Adapter<GenreItemAdapter.View
 
         }
     }
+
+//    public void filter(String text) {
+//        list.clear();
+//        if(text.isEmpty()){
+//            list.addAll(listCopia);
+//        } else{
+//            text = text.toLowerCase();
+//            for(SerieItem item: listCopia){
+//                if(item.getSerieName().toLowerCase().contains(text)){
+//                    list.add(item);
+//                }
+//            }
+//        }
+//        notifyDataSetChanged();
+//    }
+
 }

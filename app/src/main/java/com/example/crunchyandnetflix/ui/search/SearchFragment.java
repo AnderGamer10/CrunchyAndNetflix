@@ -12,6 +12,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.crunchyandnetflix.databinding.FragmentSearchBinding;
 
+import java.util.Objects;
+
 public class SearchFragment extends Fragment {
 
     private FragmentSearchBinding binding;

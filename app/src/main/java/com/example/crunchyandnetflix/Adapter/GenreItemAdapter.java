@@ -27,11 +27,12 @@ public class GenreItemAdapter extends RecyclerView.Adapter<GenreItemAdapter.View
 
     private final Context context;
     private final List<SerieItem> list;
-//    private final List<SerieItem> listCopia = null;
+    private final List<SerieItem> listCopia;
     public GenreItemAdapter(Context context, ArrayList<SerieItem> list) {
         this.context = context;
         this.list = list;
-//        this.listCopia.addAll(list);
+        this.listCopia= new ArrayList<>();
+        this.listCopia.addAll(list);
     }
 
     @NonNull
@@ -90,19 +91,19 @@ public class GenreItemAdapter extends RecyclerView.Adapter<GenreItemAdapter.View
         }
     }
 
-//    public void filter(String text) {
-//        list.clear();
-//        if(text.isEmpty()){
-//            list.addAll(listCopia);
-//        } else{
-//            text = text.toLowerCase();
-//            for(SerieItem item: listCopia){
-//                if(item.getSerieName().toLowerCase().contains(text)){
-//                    list.add(item);
-//                }
-//            }
-//        }
-//        notifyDataSetChanged();
-//    }
+    public void filter(String text) {
+        list.clear();
+        if(text.isEmpty()){
+            list.addAll(listCopia);
+        } else{
+            text = text.toLowerCase();
+            for(SerieItem item: listCopia){
+                if(item.getSerieName().toLowerCase().contains(text)){
+                    list.add(item);
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
 
 }

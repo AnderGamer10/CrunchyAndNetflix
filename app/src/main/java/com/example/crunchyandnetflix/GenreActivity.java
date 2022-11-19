@@ -27,7 +27,7 @@ public class GenreActivity extends AppCompatActivity {
         setContentView(R.layout.activity_genre);
 
         genero = getIntent().getStringExtra("genero");
-        nombreGenero = findViewById(R.id.idTxtNombreGenero);
+        nombreGenero = findViewById(R.id.idFavoritosTxt);
         nombreGenero.setText(genero);
 
         ArrayList<Data> datosArrayAParsear = IntroActivity.listaCompleta;
@@ -42,7 +42,7 @@ public class GenreActivity extends AppCompatActivity {
             }
         }
 
-        recyclerView = findViewById(R.id.idGeneroSeries);
+        recyclerView = findViewById(R.id.idListFavoritosRc);
         genreItemAdapter = new GenreItemAdapter(this, listGenre);
         linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);

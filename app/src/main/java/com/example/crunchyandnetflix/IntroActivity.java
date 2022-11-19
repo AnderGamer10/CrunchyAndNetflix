@@ -104,19 +104,15 @@ public class IntroActivity extends AppCompatActivity {
         return listaCompleta;
     }
     private void cargarPreferencias() {
-        SharedPreferences preferences = getSharedPreferences("favoritos", Context.MODE_PRIVATE);
+//        TODO: Codigo de prueba para borrar sharedPreferences
 //        SharedPreferences.Editor editor = getSharedPreferences("favoritos", MODE_PRIVATE).edit();
 //        editor.clear().apply();
+
+        SharedPreferences preferences = getSharedPreferences("favoritos", Context.MODE_PRIVATE);
         Set<String> set = preferences.getStringSet("idList", new HashSet<String>());
         listaFavoritos.addAll(set);
         for (int i = 0; i < listaFavoritos.size();i++){
             Log.i("mostrando", listaFavoritos.get(i));
         }
     }
-//    SharedPreferences preferences = context.getSharedPreferences("favoritos", Context.MODE_PRIVATE);
-//    SharedPreferences.Editor editor = preferences.edit();
-//    Set<String> set = new HashSet<>();
-//                set.addAll(IntroActivity.listaFavoritos);
-//                editor.putStringSet("idList", set);
-//                editor.apply();
 }

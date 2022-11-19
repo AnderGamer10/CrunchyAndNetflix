@@ -3,9 +3,12 @@ package com.example.crunchyandnetflix.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.crunchyandnetflix.IntroActivity;
 import com.example.crunchyandnetflix.Modelos.SerieItem;
 import com.example.crunchyandnetflix.R;
 import com.example.crunchyandnetflix.SerieActivity;
@@ -20,8 +24,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
+import java.util.Set;
 
 public class GenreItemAdapter extends RecyclerView.Adapter<GenreItemAdapter.ViewHolder> {
 

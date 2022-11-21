@@ -49,13 +49,13 @@ public class IntroActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             progressBar.setVisibility(View.VISIBLE);
-            cargarPreferencias();
             getListaCompleta();
+            cargarPreferencias();
         }
         @Override
         protected String doInBackground(String... strings) {
             try {
-                Thread.sleep(2000);
+                Thread.sleep(5000);
             }catch (InterruptedException e){
                 e.printStackTrace();
             }
@@ -63,7 +63,6 @@ public class IntroActivity extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(String s) {
-            progressBar.setVisibility(View.INVISIBLE);
             Intent newActivity = new Intent(IntroActivity.this, MainActivity.class);
             IntroActivity.this.startActivity(newActivity);
         }
@@ -104,10 +103,6 @@ public class IntroActivity extends AppCompatActivity {
         return listaCompleta;
     }
     private void cargarPreferencias() {
-//        TODO: Codigo de prueba para borrar sharedPreferences
-//        SharedPreferences.Editor editor = getSharedPreferences("favoritos", MODE_PRIVATE).edit();
-//        editor.clear().apply();
-
         SharedPreferences preferences = getSharedPreferences("favoritos", Context.MODE_PRIVATE);
         Set<String> set = preferences.getStringSet("idList", new HashSet<String>());
         listaFavoritos.addAll(set);

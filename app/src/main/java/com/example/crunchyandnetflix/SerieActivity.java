@@ -96,9 +96,6 @@ public class SerieActivity extends AppCompatActivity {
                     }
                 }
             }
-            for (int i = 0; i < IntroActivity.listaFavoritos.size();i++){
-                Log.i("anadiendo", IntroActivity.listaFavoritos.get(i));
-            }
         });
     }
 }
